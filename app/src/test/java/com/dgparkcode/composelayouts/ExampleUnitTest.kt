@@ -1,4 +1,4 @@
-package com.dgparkcode.firebase
+package com.dgparkcode.composelayouts
 
 import org.junit.Test
 
