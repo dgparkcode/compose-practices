@@ -35,13 +35,13 @@ fun FavoriteCollectionCard(
             modifier = Modifier.width(192.dp)
         ) {
             Image(
-                painter = painterResource(R.drawable.fc2_nature_meditations),
+                painter = painterResource(drawable),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.size(56.dp)
             )
             Text(
-                text = stringResource(R.string.fc2_nature_meditations),
+                text = stringResource(text),
                 style = MaterialTheme.typography.headlineSmall,
                 modifier = Modifier.padding(horizontal = 16.dp)
             )
