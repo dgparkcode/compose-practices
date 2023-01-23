@@ -6,8 +6,11 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.dgparkcode.composebasics.ui.theme.ComposepracticesTheme
@@ -22,7 +25,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    MyApp(modifier = Modifier.fillMaxSize())
                 }
             }
         }
@@ -30,14 +33,24 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun MyApp(modifier: Modifier = Modifier) {
+    var shouldShowOnBoarding by rememberSaveable {
+        mutableStateOf(true)
+    }
+
+    Surface(modifier = modifier) {
+        if (shouldShowOnBoarding) {
+            OnBoardingScreen { shouldShowOnBoarding = false }
+        } else {
+            Greetings()
+        }
+    }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
-fun DefaultPreview() {
+fun MyAppPreview() {
     ComposepracticesTheme {
-        Greeting("Android")
+        MyApp(Modifier.fillMaxSize())
     }
 }
